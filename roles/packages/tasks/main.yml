@@ -1,0 +1,14 @@
+- name: packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - vim
+    - git
+    - htop
+    - polybar
+    - direnv
+    - i3
+    - arc-theme
+    - rofi
+

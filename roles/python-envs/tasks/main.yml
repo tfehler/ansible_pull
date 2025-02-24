@@ -1,0 +1,31 @@
+- name: Ensure python3 and python3-venv are installed
+  apt:
+    name:
+      - python3
+      - python3-venv
+    state: present
+
+- name: Ensure directory HOME_DIR/.py-envs exists
+  file:
+    path: "{{ HOME_DIR }}/.py-envs"
+    state: directory
+    mode: '0755'
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    recurse: yes
+
+- name: Record installed virtual environments
+  shell: ls "{{ HOME_DIR }}/.py-envs"
+  register: venvs
+  changed_when: false
+
+- name: Create python virtual environments
+  command: python3 -m venv "{{ HOME_DIR }}/.py-envs/{{ item.name }}"
+  with_items: "{{ python_envs }}"
+  when: "{{ item.name not in venvs }}"
+
+- name: Install packages in python virtual environments
+  command: "{{ HOME_DIR }}/.py-envs/{{ item.name }}/bin/pip install {{ item.packages | join(' ') }}"
+  with_items: "{{ python_envs }}"
+  when: "{{ item.name not in venvs }}"
+

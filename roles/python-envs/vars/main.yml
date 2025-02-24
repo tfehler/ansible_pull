@@ -1,0 +1,33 @@
+
+ansible_user: "tim"
+HOME_DIR: "/home/tim/"
+
+python_envs:
+  - name: hep-calc
+    packages:
+      - argparse
+      - scikit-hep
+      - numpy
+      - matplotlib
+      - pandas
+      - jupyter
+      - jupytext
+
+  - name: ml-classification
+    packages:
+      - argparse
+      - numpy
+      - tensorflow
+      - keras
+      - scikit-learn
+      - matplotlib
+      - pandas
+      - jupyter
+      - jupytext
+
+  - name: mkdocs
+    packages:
+      - mkdocs
+      - mkdocs-material
+
+ 
