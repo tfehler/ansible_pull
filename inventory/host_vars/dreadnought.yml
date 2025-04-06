@@ -1,2 +1,5 @@
 hostname: dreadnought
+ansible_group:
+  - all
+  - workstations
 workstation_user: tim

@@ -1,7 +1,3 @@
-
-ansible_user: "tim"
-HOME_DIR: "/home/tim/"
-
 python_envs:
   - name: hep-calc
     packages:
@@ -19,6 +15,7 @@ python_envs:
       - numpy
       - tensorflow
       - keras
+      - scikit-hep
       - scikit-learn
       - matplotlib
       - pandas
@@ -29,5 +26,3 @@ python_envs:
     packages:
       - mkdocs
       - mkdocs-material
-
- 

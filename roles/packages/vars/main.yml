@@ -1,0 +1,14 @@
+packages:
+  all:
+    - vim
+    - git
+    - htop
+  workstations:
+    - polybar
+    - direnv
+    - i3
+    - arc-theme
+    - rofi
+    - fzf
+    - gimp
+    - inkscape

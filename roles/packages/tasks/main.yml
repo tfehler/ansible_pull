@@ -1,5 +1,11 @@
-- name: packages
-  apt:
-    name: "{{ packages }}"
+- name: Install common packages for all systems
+  ansible.builtin.package:
+    name: "{{ packages['all'] }}"
     state: present
-  when: packages is defined
+
+- name: Install packages for each ansible group
+  ansible.builtin.package:
+    name: "{{ packages[item] }}"
+    state: present
+  loop: "{{ ansible_group }}"
+  when: item in packages

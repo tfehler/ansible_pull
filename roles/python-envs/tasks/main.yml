@@ -3,29 +3,34 @@
     name:
       - python3
       - python3-venv
+      - python3-pip
     state: present
 
-- name: Ensure directory HOME_DIR/.py-envs exists
+- name: Ensure directory /home/{{ workstation_user }}/.py-envs exists
   file:
-    path: "{{ HOME_DIR }}/.py-envs"
+    path: "/home/{{ workstation_user }}/.py-envs"
     state: directory
-    mode: '0755'
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    mode: "0755"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
     recurse: yes
 
-- name: Record installed virtual environments
-  shell: ls "{{ HOME_DIR }}/.py-envs"
-  register: venvs
-  changed_when: false
+- name: Check if virtual environment exists
+  stat:
+    path: "/home/{{ workstation_user }}/.py-envs/{{ item.name }}/bin/activate"
+  loop: "{{ python_envs }}"
+  register: venv_paths
 
 - name: Create python virtual environments
-  command: python3 -m venv "{{ HOME_DIR }}/.py-envs/{{ item.name }}"
-  with_items: "{{ python_envs }}"
-  when: "{{ item.name not in venvs }}"
+  command: python3 -m venv "/home/{{ workstation_user }}/.py-envs/{{ item.item.name }}"
+  loop: "{{ venv_paths.results }}"
+  when: not item.stat.exists
 
-- name: Install packages in python virtual environments
-  command: "{{ HOME_DIR }}/.py-envs/{{ item.name }}/bin/pip install {{ item.packages | join(' ') }}"
-  with_items: "{{ python_envs }}"
-  when: "{{ item.name not in venvs }}"
-
+- name: Install packages in virtual environments
+  become_user: "{{ workstation_user }}"
+  pip:
+    virtualenv: "/home/{{ workstation_user }}/.py-envs/{{ item.name }}"
+    virtualenv_command: "python3 -m venv"
+    name: "{{ item.packages }}"
+    state: present
+  loop: "{{ python_envs }}"

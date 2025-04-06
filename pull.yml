@@ -2,13 +2,22 @@
   hosts: localhost
   connection: local
   become: yes
+
   vars_files:
-    - inventory/host_vars/{{ ansible_hostname}}.yml
+    - inventory/host_vars/{{ ansible_hostname }}.yml
+
   pre_tasks:
+    - name: Print host name
+      debug:
+        var: ansible_hostname
+    - name: Print group affiliation
+      debug:
+        var: ansible_group
     - name: Ensure apt cache is up to date
       apt:
         update_cache: yes
 
   roles:
+    - common
     - packages
     - python-envs
