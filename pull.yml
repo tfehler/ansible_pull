@@ -1,8 +1,9 @@
-- name: Workstation configuration
+- name: Workstation configuration via ansible pull
   hosts: localhost
   connection: local
   become: yes
-  gather_facts: no
+  vars_files:
+    - inventory/host_vars/{{ ansible_hostname}}.yml
   pre_tasks:
     - name: Ensure apt cache is up to date
       apt:

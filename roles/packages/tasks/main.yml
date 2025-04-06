@@ -1,14 +1,5 @@
 - name: packages
   apt:
-    name: "{{ item }}"
+    name: "{{ packages }}"
     state: present
-  with_items:
-    - vim
-    - git
-    - htop
-    - polybar
-    - direnv
-    - i3
-    - arc-theme
-    - rofi
-
+  when: packages is defined
