@@ -8,6 +8,7 @@ packages:
     - polybar
     - direnv
     - i3
+    - arandr
     - arc-theme
     - rofi
     - fzf
