@@ -21,3 +21,4 @@
     - common
     - packages
     - python-envs
+    - docker
