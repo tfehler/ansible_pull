@@ -2,6 +2,7 @@ packages:
   all:
     - vim
     - git
+    - tmux
     - htop
   workstations:
     - polybar
@@ -12,3 +13,5 @@ packages:
     - fzf
     - gimp
     - inkscape
+    - texlive-full
+    - zathura
