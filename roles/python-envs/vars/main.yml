@@ -8,6 +8,7 @@ python_envs:
       - pandas
       - jupyter
       - jupytext
+      - jupyterlab-vim
       - seaborn
 
   - name: ml-classification
@@ -22,6 +23,7 @@ python_envs:
       - pandas
       - jupyter
       - jupytext
+      - jupyterlab-vim
       - seaborn 
 
   - name: mkdocs
