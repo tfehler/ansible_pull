@@ -9,7 +9,7 @@ Since I have not found that many good resources regarding the Ansible pull workf
 Run the following command to bootstrap the workstation:
 
 ```bash
-ansible-pull -U https://github.com/TimFehler/ansible_workstation.git -d $HOME/.ansible_pull -i localhost, -e ansible_hostname=$(hostname) pull.yml
+sudo ansible-pull -U https://github.com/TimFehler/ansible_workstation.git -d $HOME/.ansible_pull -i localhost, -e ansible_hostname=$(hostname) pull.yml
 ```
 
 ## Anacron job for consistent provisioning
