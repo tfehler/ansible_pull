@@ -9,6 +9,8 @@ python_envs:
       - jupyter
       - jupytext
       - jupyterlab-vim
+      - jupyterlab-lsp
+      - 'python-lsp-server[all]'
       - seaborn
 
   - name: ml-classification
@@ -24,6 +26,8 @@ python_envs:
       - jupyter
       - jupytext
       - jupyterlab-vim
+      - jupyterlab-lsp
+      - 'python-lsp-server[all]'
       - seaborn 
 
   - name: mkdocs
