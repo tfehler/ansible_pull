@@ -18,6 +18,8 @@ python_envs:
       - argparse
       - numpy
       - tensorflow
+      - ydf
+      - mlflow
       - keras
       - scikit-hep
       - scikit-learn
