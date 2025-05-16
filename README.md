@@ -9,7 +9,7 @@ Since I have not found that many good resources regarding the Ansible pull workf
 Run the following command to bootstrap the workstation:
 
 ```bash
-sudo ansible-pull -U https://github.com/TimFehler/ansible_workstation.git -d $HOME/.ansible_pull -i localhost, -e ansible_hostname=$(hostname) pull.yml
+sudo ansible-pull -U https://github.com/tfehler/ansible_workstation.git -d $HOME/.ansible_pull -i localhost, -e ansible_hostname=$(hostname) pull.yml
 ```
 
 ## Anacron job for consistent provisioning
@@ -35,7 +35,7 @@ chmod 644 "$LOG_FILE"
 # Run the ansible-pull command and log output
 {
     echo "Starting ansible-pull at $(date)"
-    ansible-pull -U https://github.com/TimFehler/ansible_workstation.git \
+    ansible-pull -U https://github.com/tfehler/ansible_workstation.git \
         -d "$ANSIBLE_DIR" \
         -i localhost, \
         -e ansible_hostname=$(hostname) pull.yml
