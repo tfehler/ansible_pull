@@ -4,6 +4,7 @@ set -euo pipefail
 # --- Configuration ---
 ANSIBLE_USER="ansible"
 ANSIBLE_REPO="git@github.com:tfehler/ansible-pull.git"   # SSH URL
+ANSIBLE_REPO_URL="git@github.com" # Base URL for SSH access
 ANSIBLE_BRANCH="main"
 LOG_DIR="/var/log/ansible-pull"
 PULL_INTERVAL="30min"   # systemd time format (can be '1h', '10min', etc.)
@@ -78,4 +79,4 @@ systemctl enable --now ansible-pull.timer
 
 echo "Ansible-pull bootstrap complete."
 echo "-> Check logs in $LOG_DIR/ansible-pull.log"
-echo "-> Run 'sudo -u $ANSIBLE_USER ssh -T $ANSIBLE_REPO' once to accept the host key."
+echo "-> Run 'sudo -u $ANSIBLE_USER ssh -T $ANSIBLE_REPO_URL' once to accept the host key."
