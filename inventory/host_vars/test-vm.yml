@@ -1,5 +1,7 @@
-hostname: testnode
+hostname: test-vm
 ansible_group:
   - all
-  - workstations
+os:
+  - debian13
 workstation_user: tim
+
