@@ -16,7 +16,3 @@
     - name: Ensure apt cache is up to date
       apt:
         update_cache: yes
-
-  roles:
-    - common
-
