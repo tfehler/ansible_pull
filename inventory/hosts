@@ -1,0 +1,2 @@
+[testmachines]
+test-vm ansible_connection=local
