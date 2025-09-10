@@ -1,0 +1,6 @@
+- name: Ensure basic packages are installed 
+  loop: "{{ basic_packages }}"
+  apt:
+    name: "{{ item }}"
+    state: present
+  when: basic_packages is defined

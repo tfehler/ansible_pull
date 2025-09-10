@@ -1,0 +1,21 @@
+hostname: lithium
+ansible_group:
+  - all
+  - workstations
+workstation_user: tim
+basic_packages:
+    - vim
+    - git
+    - tmux
+    - htop
+    - polybar
+    - direnv
+    - i3
+    - arandr
+    - arc-theme
+    - rofi
+    - fzf
+    - gimp
+    - inkscape
+    - texlive-full
+    - zathura

@@ -6,7 +6,7 @@
   pre_tasks:
     - name: Load host vars from host_vars/{{ ansible_hostname }}.yml
       include_vars:
-        file: "host_vars/{{ ansible_hostname }}.yml"
+        file: "inventory/host_vars/{{ ansible_hostname }}.yml"
     - name: Print host name
       debug:
         var: ansible_hostname
@@ -17,7 +17,5 @@
       apt:
         update_cache: yes
 
-  tasks:
-    - name: Print the value of new_var
-      debug:
-        var: new_var
+  roles:
+    - basic_packages 

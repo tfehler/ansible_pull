@@ -4,4 +4,8 @@ ansible_group:
 os:
   - debian13
 workstation_user: tim
-new_var: "Hello from host_vars/test-vm.yml"
+basic_packages:
+  - git
+  - vim
+  - htop
+  - tmux

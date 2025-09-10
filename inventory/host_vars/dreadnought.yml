@@ -1,10 +1,13 @@
-packages:
-  all:
+hostname: dreadnought
+ansible_group:
+  - all
+  - workstations
+workstation_user: tim
+basic_packages:
     - vim
     - git
     - tmux
     - htop
-  workstations:
     - polybar
     - direnv
     - i3
@@ -16,3 +19,4 @@ packages:
     - inkscape
     - texlive-full
     - zathura
+  
