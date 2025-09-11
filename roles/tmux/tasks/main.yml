@@ -1,0 +1,23 @@
+- name: Ensure tmux and related packages are installed
+  apt:
+    name:
+      - tmux
+      - xclip
+    state: present
+
+- name: Ensure tmux plugin manager is installed
+  become: true
+  become_user: "{{ workstation_user }}"
+  git:
+    repo: https://github.com/tmux-plugins/tpm.git
+    dest: //home/{{ workstation_user }}/.tmux/plugins/tpm
+    update: yes
+  when: tmux_plugin_manager
+
+- name: Copy tmux config file to home directory
+  template:
+    src: tmux.conf.j2
+    dest: "/home/{{ workstation_user }}/.tmux.conf"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+    mode: '0644'

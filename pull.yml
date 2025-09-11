@@ -22,7 +22,7 @@
   tasks:
     - name: Run individual plays
       loop: "{{ ansible_group }}"
-      include: "group_{{ group }}.yml"
+      include_tasks: "group_{{ group }}.yml"
       loop_control:
         loop_var: group
       

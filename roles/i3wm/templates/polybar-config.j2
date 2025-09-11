@@ -164,7 +164,13 @@ label-connected = %{F#F0C674}%ifname%%{F-} %essid% %local_ip%
 
 [module/eth]
 inherit = network-base
+{% if ansible_hostname == "lithium" %}
 interface = enp0s31f6
+{% elif ansible_hostname == "dreadnought" %}
+interface = enp0s31f6
+{% else %}
+interface = enp0s31f6
+{% endif %}
 interface-type = wired
 label-connected = %{F#F0C674}%ifname%%{F-} %local_ip%
 

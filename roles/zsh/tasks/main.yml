@@ -1,0 +1,52 @@
+- name: Install zsh
+  package:
+    name: zsh
+    state: present
+
+- name: Change default shell to zsh for user
+  user:
+    name: "{{ workstation_user }}"
+    shell: /usr/bin/zsh
+
+- name: Install oh-my-zsh
+  become: true
+  become_user: "{{ workstation_user }}"
+  git:
+    repo: https://github.com/ohmyzsh/ohmyzsh.git
+    dest: "/home/{{ workstation_user }}/.oh-my-zsh"
+    version: master
+    update: no
+
+- name: Copy zsh configuration file
+  template:
+    src: zshrc.j2
+    dest: "/home/{{ workstation_user }}/.zshrc"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+    mode: '0644'
+
+- name: Install zsh-autosuggestions plugin
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: "/home/{{ workstation_user }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+    version: master
+
+- name: Install zsh-syntax-highlighting plugin
+  git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: "/home/{{ workstation_user }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+    version: master
+
+- name: Create directory for custom prompts
+  file:
+    path: "/home/{{ workstation_user }}/.zsh"
+    state: directory
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+    mode: '0755'
+
+- name: Install pure prompt
+  git:
+    repo: https://github.com/sindresorhus/pure.git
+    dest: "/home/{{ workstation_user }}/.zsh/pure"
+    version: master

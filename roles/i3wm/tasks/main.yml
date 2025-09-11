@@ -10,10 +10,10 @@
     state: present
 
 - name: i3wm configuration
-  include: i3wm.yml
+  include_tasks: i3wm.yml
 
 - name: rofi menu configuration
-  include: rofi.yml
+  include_tasks: rofi.yml
 
 - name: polybar configuration
-  include: polybar.yml
+  include_tasks: polybar.yml

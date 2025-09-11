@@ -9,3 +9,7 @@
 - name: Configure the kitty terminal emulator
   include_role:
     name: kitty
+
+- name: Configure tmux terminal multiplexer
+  include_role:
+    name: tmux

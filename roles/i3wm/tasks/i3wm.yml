@@ -17,7 +17,7 @@
 
 - name: Ensure BG image is present
   copy:
-    src: patagonia.jpg
+    src: "wallpaper/{{ wallpaper }}"
     dest: "/home/{{ workstation_user }}/.config/bg/background.jpg"
     owner: "{{ workstation_user }}"
     group: "{{ workstation_user }}"

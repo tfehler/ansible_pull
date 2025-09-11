@@ -6,9 +6,7 @@ workstation_user: tim
 basic_packages:
     - vim
     - git
-    - tmux
     - htop
-    - polybar
     - direnv
     - arandr
     - arc-theme
@@ -17,3 +15,5 @@ basic_packages:
     - inkscape
     - texlive-full
     - zathura
+wallpaper: nepal.jpg
+tmux_plugin_manager: true

@@ -1,3 +1,7 @@
 - name: Install basic packages
   include_role:
     name: basic_packages
+
+- name: Configure tmux terminal multiplexer
+  include_role:
+    name: tmux
