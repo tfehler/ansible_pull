@@ -1,0 +1,20 @@
+- name: Ensure kitty is installed
+  apt:
+    name: kitty
+    state: present
+
+- name: Ensure kitty config directory exists
+  file:
+    path: /home/{{ workstation_user }}/.config/kitty
+    state: directory
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+    mode: '0755'
+
+- name: Copy kitty config file to .config/kitty/kitty.conf
+  template:
+    src: kitty-conf.j2
+    dest: /home/{{ workstation_user }}/.config/kitty/kitty.conf
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+    mode: '0644'

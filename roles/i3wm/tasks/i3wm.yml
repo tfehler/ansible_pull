@@ -1,0 +1,33 @@
+- name: Copy config file to .config/i3/config
+  template:
+    src: i3-config.j2
+    dest: "/home/{{ workstation_user }}/.config/i3/config"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+    mode: '0644'
+  register: i3_config_changed
+
+- name: Ensure bg config directory exists
+  file:
+    path: "/home/{{ workstation_user }}/.config/bg"
+    state: directory
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+    mode: '0755'
+
+- name: Ensure BG image is present
+  copy:
+    src: patagonia.jpg
+    dest: "/home/{{ workstation_user }}/.config/bg/background.jpg"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+    mode: '0644'
+
+- name: Restart i3 if config changed
+  become: true
+  become_user: "{{ workstation_user }}"
+  shell: |
+    killall redshift
+    killall picom
+    i3-msg reload
+  when: i3_config_changed.changed

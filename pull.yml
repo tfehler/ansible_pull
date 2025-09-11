@@ -2,6 +2,8 @@
   hosts: localhost
   connection: local
   become: yes
+  vars_files:
+    - vars/main.yml
 
   pre_tasks:
     - name: Load host vars from host_vars/{{ ansible_hostname }}.yml
@@ -16,6 +18,11 @@
     - name: Ensure apt cache is up to date
       apt:
         update_cache: yes
-
-  roles:
-    - basic_packages 
+  
+  tasks:
+    - name: Run individual plays
+      loop: "{{ ansible_group }}"
+      include: "group_{{ group }}.yml"
+      loop_control:
+        loop_var: group
+      

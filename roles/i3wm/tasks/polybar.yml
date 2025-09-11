@@ -1,0 +1,31 @@
+- name: Ensure polybar config directory exists
+  file:
+    path: "/home/{{ workstation_user }}/.config/polybar"
+    state: directory
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+    mode: '0755'
+
+- name: Copy polybar config file to ~/.config/polybar/config
+  template:
+    src: polybar-config.j2
+    dest: "/home/{{ workstation_user }}/.config/polybar/config.ini"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+    mode: '0644'
+  register: polybar_config
+
+- name: Copy launch script to ~/.config/polybar/launch.sh and make it executable
+  copy:
+    src: polybar/launch.sh
+    dest: "/home/{{ workstation_user }}/.config/polybar/launch.sh"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+    mode: '0755' 
+  
+- name: Restart polybar if config changed
+  become: true
+  become_user: "{{ workstation_user }}"
+  shell: |
+    /home/{{ workstation_user }}/.config/polybar/launch.sh
+  when: polybar_config.changed

@@ -1,0 +1,11 @@
+- name: Install basic packages
+  include_role:
+    name: basic_packages
+
+- name: Configure the i3 window manager
+  include_role:
+    name: i3wm
+
+- name: Configure the kitty terminal emulator
+  include_role:
+    name: kitty

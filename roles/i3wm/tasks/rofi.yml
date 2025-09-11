@@ -1,0 +1,23 @@
+- name: Ensure rofi config directory exists
+  file:
+    path: "/home/{{ workstation_user }}/.config/rofi"
+    state: directory
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+    mode: '0755'
+
+- name: Copy config file to .config/rofi/config
+  template:
+    src: rofi-config.j2
+    dest: "/home/{{ workstation_user }}/.config/rofi/config.rasi"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+    mode: '0644'
+
+- name: Copy rofi-power-menu script to ~/.local/bin and make it executable
+  template:
+    src: rofi-power-menu.j2
+    dest: "/home/{{ workstation_user }}/.local/bin/rofi-power-menu"
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+    mode: '0775'

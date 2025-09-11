@@ -1,7 +1,7 @@
 hostname: dreadnought
 ansible_group:
   - all
-  - workstations
+  - workstation
 workstation_user: tim
 basic_packages:
     - vim
@@ -10,10 +10,8 @@ basic_packages:
     - htop
     - polybar
     - direnv
-    - i3
     - arandr
     - arc-theme
-    - rofi
     - fzf
     - gimp
     - inkscape

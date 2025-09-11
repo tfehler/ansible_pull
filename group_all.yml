@@ -1,0 +1,3 @@
+- name: Ensure the timezone is correct
+  timezone:
+    name: Europe/Berlin
