@@ -194,13 +194,14 @@ bindsym $mod+r mode "resize"
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Adjusting screen color to daylight level
-exec_always --no-startup-id redshift -l 50.87:8.024 -t 5700:3600 -P
+exec_always --no-startup-id redshift -l 50.87:8.024 -t 6000:5000 -P
 
 #
 # Own additions
 #
 
 for_window [class="Arandr"] floating enable
+for_window [class="Blueman-manager"] floating enable
 
 # Lock screen (with wallpaper)
 bindsym $mod+Shift+n exec i3lock -i /home/tim/Sync/WorkstationSetup/Wallpaper/carina_nebula.png
