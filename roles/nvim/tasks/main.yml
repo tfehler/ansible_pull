@@ -7,7 +7,7 @@
   become: true
   become_user: "{{ workstation_user }}"
   git:
-    repo: https://github.com/tfehler/neovim-config.git
+    repo: "{{ neovim_config_repo }}" 
     dest: ~/.config/nvim
     force: yes
     update: yes
