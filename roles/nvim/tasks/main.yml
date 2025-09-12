@@ -1,0 +1,20 @@
+- name: Ensure neovim is installed
+  package:
+    name: neovim
+    state: present
+
+- name: Ensure neovim config is installed from github repo
+  become: true
+  become_user: "{{ workstation_user }}"
+  git:
+    repo: https://github.com/tfehler/neovim-config.git
+    dest: ~/.config/nvim
+    force: yes
+    update: yes
+  when: install_neovim_config
+
+- name: Ensure LazyVim dependencies are installed
+  apt:
+    name: fzf
+    state: present
+  when: install_neovim_config

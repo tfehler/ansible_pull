@@ -12,7 +12,7 @@
     repo: https://github.com/tmux-plugins/tpm.git
     dest: //home/{{ workstation_user }}/.tmux/plugins/tpm
     update: yes
-  when: tmux_plugin_manager
+  when: install_tmux_plugin_manager
 
 - name: Copy tmux config file to home directory
   template:

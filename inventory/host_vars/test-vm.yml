@@ -9,4 +9,4 @@ basic_packages:
   - git
   - vim
   - htop
-tmux_plugin_manager: false
+  - arc-theme

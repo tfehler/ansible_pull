@@ -10,10 +10,10 @@ basic_packages:
     - direnv
     - arandr
     - arc-theme
-    - fzf
     - gimp
     - inkscape
     - texlive-full
     - zathura
 wallpaper: nepal.jpg
-tmux_plugin_manager: true
+install_tmux_plugin_manager: true
+install_neovim_config: true
