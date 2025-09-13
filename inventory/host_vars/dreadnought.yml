@@ -15,6 +15,7 @@ basic_packages:
     - inkscape
     - texlive-full
     - zathura
+    - timewarrior
 wallpaper: nepal.jpg
 install_tmux_plugin_manager: true
 install_neovim_config: true

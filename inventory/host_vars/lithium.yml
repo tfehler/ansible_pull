@@ -10,10 +10,12 @@ basic_packages:
     - direnv
     - arandr
     - arc-theme
+    - fzf
     - gimp
     - inkscape
     - texlive-full
     - zathura
+    - timewarrior
 wallpaper: nepal.jpg
 install_tmux_plugin_manager: true
 install_neovim_config: true

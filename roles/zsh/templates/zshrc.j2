@@ -114,5 +114,8 @@ prompt pure
 #alias ssh="kitty +kitten ssh"
 alias tmux="tmux -2"
 
+# Fuzzy finding for switching directories
+alias sd="cd ~ && cd \$(find * -type d | fzf)"
+
 eval "$(direnv hook zsh)"
 
