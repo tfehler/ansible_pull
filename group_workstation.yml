@@ -14,6 +14,3 @@
   include_role:
     name: tmux
 
-- name: Configure neovim text editor
-  include_role:
-    name: nvim
