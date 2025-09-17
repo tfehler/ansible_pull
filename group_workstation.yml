@@ -14,3 +14,6 @@
   include_role:
     name: tmux
 
+- name: Configure zsh shell
+  include_role:
+    name: zsh

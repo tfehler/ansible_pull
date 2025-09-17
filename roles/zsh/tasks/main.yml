@@ -49,4 +49,4 @@
   git:
     repo: https://github.com/sindresorhus/pure.git
     dest: "/home/{{ workstation_user }}/.zsh/pure"
-    version: master
+    version: main
